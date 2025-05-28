@@ -52,7 +52,6 @@
         const downloadLink = document.getElementById("downloadLink");
 
         logView.innerText = "";
-        // pdfLink.classList.add("d-none");
 
         socket.onopen = () => {
           const latex = document.getElementById("latexInput").value;
@@ -64,8 +63,6 @@
           if (msg.startsWith("PDF:")) {
             const url = msg.replace("PDF:", "");
             download(url);
-            // downloadLink.href = url;
-            // pdfLink.classList.remove("d-none");
           } else {
             logView.value += msg + "\n";
             logView.scrollTop = logView.scrollHeight;
