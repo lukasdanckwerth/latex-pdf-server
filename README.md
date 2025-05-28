@@ -40,3 +40,13 @@ http://localhost:8080
 - Click Compile
 - Watch logs in real time in the right pane
 - Automatically download PDF after success
+
+## docker-compose
+
+```yml
+latex-pdf-server:
+  image: ghcr.io/lukasdanckwerth/latex-pdf-server:main
+  ports:
+    - 8080:8080 volumes:
+    - ./data:/app/tmp
+```
