@@ -1,0 +1,23 @@
+# Stage 1: Build Go app
+# =====================
+FROM golang:1.21-alpine AS builder
+
+WORKDIR /app
+
+# Install git and deps
+RUN apk add --no-cache git
+
+COPY go.mod go.sum main.go ./
+
+RUN go mod download
+RUN go build -o server .
+
+RUN mkdir -p /app/files
+COPY ./static/ ./static/
+
+VOLUME /app/files
+
+EXPOSE 8080
+
+CMD ["./server"]
+
