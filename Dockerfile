@@ -31,9 +31,9 @@ RUN apt-get update && apt-get install -y \
 
 WORKDIR /app
 
-RUN mkdir -p /app/files
+RUN mkdir -p /app/tmp
 
-VOLUME /app/files
+VOLUME /app/tmp
 
 COPY --from=builder /app/server .
 COPY ./static /app/static
